@@ -61,7 +61,7 @@ function MomentApp() {
     return ()=>window.removeEventListener("resize", onResize);
   },[]);
 
-  const heroAnchorVisible = introActive || showGuide;
+  const heroAnchorVisible = (introActive || showGuide) && !showGuidePrompt;
   const heroAnchorMode = showGuide ? "top" : "hero";
   const isMomentsSolo = expandedSections.size===1 && cubeIndex===1;
   const isWorthSolo = expandedSections.size===1 && cubeIndex===2;
