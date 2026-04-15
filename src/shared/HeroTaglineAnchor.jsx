@@ -12,8 +12,8 @@ function HeroTaglineAnchor({mode="hero", activeStage=-1}) {
           alt="momento"
           style={{
             position:"fixed",
-            left:20,
-            top:20,
+            left:8,
+            top:8,
             height:28,
             width:28,
             objectFit:"contain",
