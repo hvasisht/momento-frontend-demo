@@ -236,6 +236,45 @@ function IntroOverlay({dark, onEnter, showForeground=true}) {
         </div>
       </div>
 
+    {/* Preview notice — bottom-center */}
+    {showForeground && (
+      <div style={{
+        position:"absolute",
+        bottom:22,
+        left:0,
+        right:0,
+        textAlign:"center",
+        zIndex:800,
+        pointerEvents:"none",
+        padding:"0 24px",
+      }}>
+        <p className="font-sans" style={{
+          margin:0,
+          fontSize:10,
+          lineHeight:1.55,
+          color:"rgba(255,248,234,0.45)",
+          letterSpacing:"0.01em",
+        }}>
+          This preview showcases Momento's experience. The AI-weighed version is available on request.{" "}
+          <a
+            href="mailto:themomentofolio@gmail.com"
+            style={{
+              color:"rgba(255,220,130,0.65)",
+              textDecoration:"none",
+              borderBottom:"1px solid rgba(255,220,130,0.3)",
+              paddingBottom:1,
+              pointerEvents:"auto",
+              transition:"color 180ms ease, border-color 180ms ease",
+            }}
+            onMouseEnter={e=>{e.currentTarget.style.color="rgba(255,220,130,0.95)";e.currentTarget.style.borderBottomColor="rgba(255,220,130,0.7)";}}
+            onMouseLeave={e=>{e.currentTarget.style.color="rgba(255,220,130,0.65)";e.currentTarget.style.borderBottomColor="rgba(255,220,130,0.3)";}}
+          >
+            Contact us at themomentofolio@gmail.com
+          </a>
+        </p>
+      </div>
+    )}
+
     {/* YouTube preview — bottom-left corner */}
     <div
       onMouseEnter={()=>!isMobile&&setYtHovered(true)}
