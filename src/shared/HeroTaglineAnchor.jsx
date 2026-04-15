@@ -139,8 +139,9 @@ function HeroTaglineAnchor({mode="hero", activeStage=-1}) {
           <p
             className="font-sans"
             style={{
-              margin:isMobile ? "14px auto 0" : "18px 0 0",
+              margin:"18px 0 0",
               padding:0,
+              width:"100%",
               fontSize:isMobile ? "clamp(11px, 3vw, 13px)" : "clamp(13px, 1.15vw, 16px)",
               fontWeight:400,
               fontStyle:"normal",
@@ -149,7 +150,6 @@ function HeroTaglineAnchor({mode="hero", activeStage=-1}) {
               textAlign:"center",
               textShadow:"0 2px 12px rgba(0,0,0,0.28)",
               whiteSpace:isMobile ? "normal" : "nowrap",
-              maxWidth:isMobile ? "min(300px, 86vw)" : "none",
               lineHeight:isMobile ? 1.45 : 1,
               pointerEvents:"none",
             }}

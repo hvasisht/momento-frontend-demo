@@ -1,6 +1,7 @@
 /* ─── MAIN APP — DEMO MODE (no auth, no backend) ────────────────────────────── */
 function MomentApp() {
   const [introActive, setIntroActive] = useState(true);
+  const [showGuidePrompt, setShowGuidePrompt] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
   const [onboardingStage, setOnboardingStage] = useState(0);
   const [showConsent, setShowConsent] = useState(false);
@@ -401,7 +402,44 @@ function MomentApp() {
     <div className={[darkMode?"dark":"",expandedSections.size===4?"four-panel":""].filter(Boolean).join(" ")} style={{display:"flex",flexDirection:"column",width:"100vw",height:"100vh",overflow:"hidden",background:darkMode?"#181410":"#FAF7EF",transition:"background 400ms ease"}}>
       {heroAnchorVisible && <HeroTaglineAnchor mode={heroAnchorMode} activeStage={-1}/>}
       {/* ── Intro overlay ── */}
-      {introActive && <IntroOverlay dark={darkMode} onEnter={()=>setShowGuide(true)} showForeground={!showGuide && !showConsent}/>}
+      {introActive && <IntroOverlay dark={darkMode} onEnter={()=>setShowGuidePrompt(true)} showForeground={!showGuide && !showConsent && !showGuidePrompt}/>}
+      {/* ── Guide / Skip prompt ── */}
+      {showGuidePrompt && (
+        <div style={{position:"fixed",inset:0,zIndex:700,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(8,5,2,0.72)",backdropFilter:"blur(6px)",WebkitBackdropFilter:"blur(6px)"}}>
+          <div style={{width:"min(360px,88vw)",background:"linear-gradient(160deg,#1C1208 0%,#140E06 100%)",border:"1px solid rgba(196,160,85,0.28)",borderRadius:20,padding:"32px 28px 26px",display:"flex",flexDirection:"column",alignItems:"center",gap:20,boxShadow:"0 24px 60px rgba(0,0,0,0.55)"}}>
+            <img src="./just logo.png" alt="" style={{width:32,height:32,objectFit:"contain",opacity:0.7}}/>
+            <div style={{textAlign:"center"}}>
+              <h3 className="font-serif" style={{margin:"0 0 10px",fontSize:22,fontWeight:600,fontStyle:"italic",color:"rgba(255,247,232,0.95)",lineHeight:1.1}}>
+                New to Momento?
+              </h3>
+              <p className="font-sans" style={{margin:0,fontSize:12,lineHeight:1.65,color:"rgba(220,200,170,0.65)"}}>
+                The guide walks you through capturing your first moment — it only takes a minute.
+              </p>
+            </div>
+            <div style={{display:"flex",flexDirection:"column",gap:10,width:"100%"}}>
+              <button
+                onClick={()=>{setShowGuidePrompt(false);setShowGuide(true);}}
+                className="font-sans"
+                style={{width:"100%",padding:"13px 0",borderRadius:999,border:"1px solid rgba(196,160,85,0.5)",background:"rgba(196,160,85,0.14)",color:"rgba(196,160,85,0.95)",fontSize:11,fontWeight:700,letterSpacing:"0.18em",textTransform:"uppercase",cursor:"pointer",transition:"background 180ms,border-color 180ms"}}
+                onMouseEnter={e=>{e.currentTarget.style.background="rgba(196,160,85,0.24)";e.currentTarget.style.borderColor="rgba(196,160,85,0.75)";}}
+                onMouseLeave={e=>{e.currentTarget.style.background="rgba(196,160,85,0.14)";e.currentTarget.style.borderColor="rgba(196,160,85,0.5)";}}
+              >
+                Take the Guide
+              </button>
+              <button
+                onClick={()=>{setShowGuidePrompt(false);setShowConsent(true);}}
+                className="font-sans"
+                style={{width:"100%",padding:"11px 0",borderRadius:999,border:"none",background:"transparent",color:"rgba(196,160,85,0.38)",fontSize:10,fontWeight:600,letterSpacing:"0.14em",textTransform:"uppercase",cursor:"pointer",transition:"color 180ms"}}
+                onMouseEnter={e=>e.currentTarget.style.color="rgba(196,160,85,0.65)"}
+                onMouseLeave={e=>e.currentTarget.style.color="rgba(196,160,85,0.38)"}
+              >
+                Skip for now
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {showGuide && <ReaderOnboardingOverlay profile={null} onStageChange={setOnboardingStage} onComplete={handleGuideComplete}/>}
       {showConsent && <ConsentScreen onAccept={handleConsentAccepted} onDecline={()=>{
         setShowConsent(false);
