@@ -194,3 +194,27 @@ html,body,#root{margin:0;padding:0;height:100%;width:100%;overflow:hidden;}
 
   /* Profile drawer */
   .dark .profile-drawer { background: var(--bg2) !important; border-color: var(--border) !important; }
+
+  /* ── Mobile responsive ─────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    /* Book shelf grid: 3 columns instead of 5 */
+    .row-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; padding: 4px 6px 6px !important; }
+
+    /* Hide scrollbars on mobile (touch scrolling handles this) */
+    .panel-scroll::-webkit-scrollbar,
+    .shelf-scroll::-webkit-scrollbar { display: none; }
+    .panel-scroll, .shelf-scroll { scrollbar-width: none; }
+
+    /* EPUB text: slightly smaller, less indent on small screens */
+    .epub-body { font-size: 15px; }
+    .epub-body p { text-indent: 0.4em; }
+
+    /* Section close button: always visible on mobile (no hover) */
+    .section-close-btn { opacity: 1 !important; }
+
+    /* Hide the bottom-right cube widget on mobile */
+    .momento-cube-widget { display: none !important; }
+
+    /* Touch-friendly: larger tap target for shelf cells */
+    .shelf-cell { min-height: 80px; }
+  }
