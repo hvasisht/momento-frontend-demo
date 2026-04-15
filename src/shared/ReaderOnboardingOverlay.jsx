@@ -271,7 +271,7 @@ function ReaderOnboardingOverlay({profile, onComplete, onStageChange}) {
       display:"flex",
       alignItems:"flex-start",
       justifyContent:"center",
-      padding:isMobile ? "16px 10px 10px" : "96px 24px 20px",
+      padding:isMobile ? "68px 10px 10px" : "96px 24px 20px",
       overflowY:isMobile ? "auto" : "hidden",
     }}>
       <div style={shellCard}>

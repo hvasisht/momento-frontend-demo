@@ -400,7 +400,7 @@ function MomentApp() {
 
   return (
     <div className={[darkMode?"dark":"",expandedSections.size===4?"four-panel":""].filter(Boolean).join(" ")} style={{display:"flex",flexDirection:"column",width:"100vw",height:"100vh",overflow:"hidden",background:darkMode?"#181410":"#FAF7EF",transition:"background 400ms ease"}}>
-      {heroAnchorVisible && <HeroTaglineAnchor mode={heroAnchorMode} activeStage={-1}/>}
+      {heroAnchorVisible && <HeroTaglineAnchor mode={heroAnchorMode} activeStage={showGuide ? onboardingStage : -1}/>}
       {/* ── Intro overlay ── */}
       {introActive && <IntroOverlay dark={darkMode} onEnter={()=>setShowGuidePrompt(true)} showForeground={!showGuide && !showConsent && !showGuidePrompt}/>}
       {/* ── Guide / Skip prompt ── */}
@@ -413,7 +413,7 @@ function MomentApp() {
                 New to Momento?
               </h3>
               <p className="font-sans" style={{margin:0,fontSize:12,lineHeight:1.65,color:"rgba(220,200,170,0.65)"}}>
-                The guide walks you through capturing your first moment — it only takes a minute.
+                The guide walks you through capturing your first moment. It only takes a minute.
               </p>
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:10,width:"100%"}}>
