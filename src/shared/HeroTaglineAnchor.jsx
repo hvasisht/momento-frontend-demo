@@ -139,7 +139,7 @@ function HeroTaglineAnchor({mode="hero", activeStage=-1}) {
           <p
             className="font-sans"
             style={{
-              margin:"18px 0 0",
+              margin:isMobile ? "14px auto 0" : "18px 0 0",
               padding:0,
               fontSize:isMobile ? "clamp(11px, 3vw, 13px)" : "clamp(13px, 1.15vw, 16px)",
               fontWeight:400,

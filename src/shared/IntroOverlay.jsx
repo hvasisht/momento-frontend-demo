@@ -151,7 +151,7 @@ function IntroOverlay({dark, onEnter, showForeground=true}) {
               height:"auto",
               display:"block",
               opacity:1,
-              filter:"brightness(0) invert(1) contrast(1.22) drop-shadow(0 10px 24px rgba(0,0,0,0.08))",
+              filter:"brightness(0) invert(1)",
             }}
           />
         </div>
