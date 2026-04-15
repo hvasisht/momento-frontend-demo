@@ -25,7 +25,7 @@ function HeroTaglineAnchor({mode="hero", activeStage=-1}) {
           }}
         />
       )}
-      {isHero && <div style={{
+      <div style={{
         position:"fixed",
         left:"50%",
         top:isHero ? "calc(50vh - 54px)" : "10px",
@@ -157,7 +157,7 @@ function HeroTaglineAnchor({mode="hero", activeStage=-1}) {
             momento finds you Readers through the way you think and feel - weighed by AI
           </p>
         )}
-      </div>}
+      </div>
     </>
   );
 }
