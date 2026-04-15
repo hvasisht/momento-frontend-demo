@@ -406,7 +406,17 @@ function MomentApp() {
       {/* ── Guide / Skip prompt ── */}
       {showGuidePrompt && (
         <div style={{position:"fixed",inset:0,zIndex:700,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(8,5,2,0.72)",backdropFilter:"blur(6px)",WebkitBackdropFilter:"blur(6px)"}}>
-          <div style={{width:"min(360px,88vw)",background:"linear-gradient(160deg,#1C1208 0%,#140E06 100%)",border:"1px solid rgba(196,160,85,0.28)",borderRadius:20,padding:"32px 28px 26px",display:"flex",flexDirection:"column",alignItems:"center",gap:20,boxShadow:"0 24px 60px rgba(0,0,0,0.55)"}}>
+          <div style={{width:"min(360px,88vw)",background:"linear-gradient(160deg,#1C1208 0%,#140E06 100%)",border:"1px solid rgba(196,160,85,0.28)",borderRadius:20,padding:"32px 28px 26px",display:"flex",flexDirection:"column",alignItems:"center",gap:20,boxShadow:"0 24px 60px rgba(0,0,0,0.55)",position:"relative"}}>
+            <button
+              onClick={()=>setShowGuidePrompt(false)}
+              className="font-sans"
+              style={{position:"absolute",top:14,left:16,display:"flex",alignItems:"center",gap:5,background:"none",border:"none",cursor:"pointer",color:"rgba(196,160,85,0.45)",fontSize:10,fontWeight:600,letterSpacing:"0.1em",textTransform:"uppercase",padding:0,transition:"color 180ms"}}
+              onMouseEnter={e=>e.currentTarget.style.color="rgba(196,160,85,0.8)"}
+              onMouseLeave={e=>e.currentTarget.style.color="rgba(196,160,85,0.45)"}
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6L8 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              Back
+            </button>
             <img src="./just logo.png" alt="" style={{width:32,height:32,objectFit:"contain",opacity:0.7}}/>
             <div style={{textAlign:"center"}}>
               <h3 className="font-serif" style={{margin:"0 0 10px",fontSize:22,fontWeight:600,fontStyle:"italic",color:"rgba(255,247,232,0.95)",lineHeight:1.1}}>
@@ -440,7 +450,7 @@ function MomentApp() {
         </div>
       )}
 
-      {showGuide && <ReaderOnboardingOverlay profile={null} onStageChange={setOnboardingStage} onComplete={handleGuideComplete}/>}
+      {showGuide && <ReaderOnboardingOverlay profile={null} onStageChange={setOnboardingStage} onComplete={handleGuideComplete} onBack={()=>{setShowGuide(false);setShowGuidePrompt(true);}}/>}
       {showConsent && <ConsentScreen onAccept={handleConsentAccepted} onDecline={()=>{
         setShowConsent(false);
         setShowGuide(true);

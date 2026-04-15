@@ -1,4 +1,4 @@
-function ReaderOnboardingOverlay({profile, onComplete, onStageChange}) {
+function ReaderOnboardingOverlay({profile, onComplete, onStageChange, onBack}) {
   const [isMobile, setIsMobile] = useState(()=>window.innerWidth <= 768);
   useEffect(()=>{
     const onResize=()=>setIsMobile(window.innerWidth<=768);
@@ -730,6 +730,10 @@ function ReaderOnboardingOverlay({profile, onComplete, onStageChange}) {
               if(step===0 && selectedBook){
                 setSelectedBookId(null);
                 setSelectedPassageId(null);
+                return;
+              }
+              if(step===0 && !selectedBook){
+                onBack && onBack();
                 return;
               }
               setStep(prev=>Math.max(0, prev-1));
