@@ -137,10 +137,11 @@ function ReaderOnboardingOverlay({profile, onComplete, onStageChange, onBack}) {
     background:"linear-gradient(180deg, rgba(248,242,228,0.97) 0%, rgba(241,231,211,0.97) 100%)",
     boxShadow:"0 38px 84px rgba(0,0,0,0.26)",
     color:"#2C1A08",
-    padding:isMobile ? "16px 14px 14px" : "24px 28px 22px",
+    padding:isMobile ? "16px 14px 32px" : "24px 28px 36px",
     display:"flex",
     flexDirection:"column",
     gap:isMobile ? 12 : 18,
+    position:"relative",
   };
 
   const softCard = {
@@ -184,8 +185,8 @@ function ReaderOnboardingOverlay({profile, onComplete, onStageChange, onBack}) {
 
   const guidePill = {
     position:"absolute",
-    left:0,
-    top:-2,
+    right:14,
+    bottom:14,
     margin:0,
     padding:"6px 11px 5px",
     borderRadius:999,
@@ -276,10 +277,7 @@ function ReaderOnboardingOverlay({profile, onComplete, onStageChange, onBack}) {
     }}>
       <div style={shellCard}>
         <div style={{width:"100%"}}>
-          <div style={{display:"flex",alignItems:"baseline",justifyContent:"center",gap:16,marginBottom:6,position:"relative"}}>
-            <p className="font-sans" style={guidePill}>
-              Guide
-            </p>
+          <div style={{display:"flex",alignItems:"baseline",justifyContent:"center",gap:16,marginBottom:6}}>
             <h3 className="font-serif" style={{margin:0,fontSize:isMobile?22:30,lineHeight:1.04,fontWeight:600,color:"#2C1A08"}}>
               {renderStageTitle()}
             </h3>
@@ -779,6 +777,7 @@ function ReaderOnboardingOverlay({profile, onComplete, onStageChange, onBack}) {
             </p>
           )}
         </div>
+        <p className="font-sans" style={guidePill}>Guide</p>
       </div>
     </div>
   );
