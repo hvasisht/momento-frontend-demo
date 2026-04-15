@@ -8,24 +8,24 @@ function HeroTaglineAnchor({mode="hero", activeStage=-1}) {
     <>
       {!isHero && (
         <img
-          src="./logo-clean.png"
+          src="./just logo.png"
           alt="momento"
           style={{
             position:"fixed",
-            left:32,
-            top:38,
-            transform:"translateY(-50%)",
-            height:22,
-            width:"auto",
+            left:20,
+            top:20,
+            height:28,
+            width:28,
+            objectFit:"contain",
             display:"block",
-            filter:"brightness(0) invert(1) contrast(1.1) drop-shadow(0 2px 8px rgba(0,0,0,0.18))",
-            opacity:0.92,
+            filter:"brightness(0) invert(1)",
+            opacity:0.75,
             zIndex:740,
             pointerEvents:"none",
           }}
         />
       )}
-      <div style={{
+      {isHero && <div style={{
         position:"fixed",
         left:"50%",
         top:isHero ? "calc(50vh - 54px)" : "10px",
@@ -157,7 +157,7 @@ function HeroTaglineAnchor({mode="hero", activeStage=-1}) {
             momento finds you Readers through the way you think and feel - weighed by AI
           </p>
         )}
-      </div>
+      </div>}
     </>
   );
 }
